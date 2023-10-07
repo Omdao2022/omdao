@@ -1,0 +1,40 @@
+{
+  "swap": "Обмен",
+  "swapTokens": "Обмен токенов",
+  "projects": "Проекты",
+  "connectWallet": "Подключить кошелек",
+  "buy": "Купить",
+  "show": "Посмотреть",
+  "addToken": "Добавить токен {{symbol}} в {{walletName}}",
+  "purchaseToken": "Покупка {{symbol}}",
+  "loading": "Загрузка",
+  "routes": {
+    "root": "Обмен",
+    "projects": "Проекты",
+    "referral": "Referral"
+  },
+  "form": {
+    "price": "Цена",
+    "currentBalance": "Текущий баланс",
+    "youGet": "Вы получаете",
+    "youGive": "Вы отдаете",
+    "max": "Максимум",
+    "makeDeal": "Совершить сделку"
+  },
+  "projectsPage": {
+    "active": "Активные",
+    "waiting": "Ожидают листинга",
+    "archive": "Архив",
+    "aboutProject": "О проекте",
+    "buyToken": "Купить {{symbol}}",
+    "showToken": "Посмотреть {{symbol}}"
+  },
+  "swapStatus": {
+    "ready": "Готов к обмену",
+    "starting": "Начало обмена",
+    "awaitingConfirm": "Ожидает подтверждения",
+    "awaitingBlockMining": "Ожидает добычи блока в сети",
+    "success": "Обмен успешно завершен",
+    "error": "Во время обмена произошла ошибка"
+  }
+}
