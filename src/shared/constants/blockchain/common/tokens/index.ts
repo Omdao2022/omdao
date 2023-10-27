@@ -20,3 +20,4 @@ export * from "./omTolW";
 export * from "./omWeBi";
 export * from "./omZely";
 export * from "./omKrk";
+export * from "./omSnS";

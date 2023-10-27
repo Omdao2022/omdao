@@ -4,7 +4,7 @@ import { IProjectProps, Project } from "./Project";
 import { useTranslation } from "react-i18next";
 import {
     COMMON_AG_DATA,
-    COMMON_ZELY_DATA,
+    COMMON_SnS_DATA,
     COMMON_KRK_DATA,
 } from "../../../shared/constants/blockchain";
 import { TFunction } from "i18next";
@@ -18,9 +18,9 @@ const getActiveProjects = (t: TFunction) => {
             buttonName: t("common.swap") + " omAra /",
         },
         {
-            title: COMMON_ZELY_DATA.title,
-            symbol: COMMON_ZELY_DATA.symbol,
-            href: COMMON_ZELY_DATA.herf,
+            title: COMMON_SnS_DATA.title,
+            symbol: COMMON_SnS_DATA.symbol,
+            href: COMMON_SnS_DATA.herf,
             buttonName: t("common.swap"),
         },
         {
