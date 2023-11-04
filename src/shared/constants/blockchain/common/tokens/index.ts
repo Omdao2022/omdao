@@ -21,3 +21,5 @@ export * from "./omWeBi";
 export * from "./omZely";
 export * from "./omKrk";
 export * from "./omSnS";
+export * from "./omQNod";
+export * from "./omGGq";

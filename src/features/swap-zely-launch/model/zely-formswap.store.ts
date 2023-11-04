@@ -83,7 +83,7 @@ export class ZELYFormSwapStore {
       await approveTransaction.wait();
 
       this._swapStatus = SwapStatus.AWAITING_CONFIRM;
-      const bytes32Symbol = formatBytes32String(ETokenSymbols.ARA);
+      const bytes32Symbol = formatBytes32String(ETokenSymbols.OMD);
 
       const swapTransaction = await this.swapContract.swapToken(
         bytes32Symbol,

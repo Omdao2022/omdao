@@ -22,4 +22,7 @@ export enum ETokenSymbols {
     Zely = "omZely",
     Krk = "omKrk",
     SnS = "omSnS",
+    QNod = "omQNod",
+    GGq = "omGGq",
+    
 }
