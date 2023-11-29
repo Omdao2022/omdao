@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import {
     COMMON_AG_DATA,
     COMMON_QNod_DATA,
-    COMMON_CRB_DATA,
+    COMMON_TIGR_DATA,
 } from "../../../shared/constants/blockchain";
 import { TFunction } from "i18next";
 
@@ -25,9 +25,9 @@ const getActiveProjects = (t: TFunction) => {
             buttonName: t("common.swap"),
         },
         {
-            title: COMMON_CRB_DATA.title,
-            symbol: COMMON_CRB_DATA.symbol,
-            href: COMMON_CRB_DATA.herf,
+            title: COMMON_TIGR_DATA.title,
+            symbol: COMMON_TIGR_DATA.symbol,
+            href: COMMON_TIGR_DATA.herf,
             buttonName: t("common.swap"),
         },
     ];
