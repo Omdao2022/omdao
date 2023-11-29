@@ -4,7 +4,6 @@ import { IProjectProps, Project } from "./Project";
 import { useTranslation } from "react-i18next";
 import {
     COMMON_AG_DATA,
-    COMMON_KRK_DATA,
     COMMON_QNod_DATA,
     COMMON_CRB_DATA,
 } from "../../../shared/constants/blockchain";
@@ -18,12 +17,7 @@ const getActiveProjects = (t: TFunction) => {
             href: COMMON_AG_DATA.herf,
             buttonName: t("common.swap") + " omAra /",
         },
-        {
-            title: COMMON_KRK_DATA.title,
-            symbol: COMMON_KRK_DATA.symbol,
-            href: COMMON_KRK_DATA.herf,
-            buttonName: t("common.swap"),
-        },
+        
         {
             title: COMMON_QNod_DATA.title,
             symbol: COMMON_QNod_DATA.symbol,
