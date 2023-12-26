@@ -24,5 +24,7 @@ export enum ETokenSymbols {
     SnS = "omSnS",
     QNod = "omQNod",
     GGq = "omGGq",
+    Circl = "omCircl",
+    
     
 }

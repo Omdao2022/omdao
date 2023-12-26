@@ -24,6 +24,7 @@ import { omKrk } from "./omKrk";
 import { omSnS } from "./omSnS";
 import { omQNod } from "./omQNod";
 import { omGGq } from "./omGGq";
+import { omCircl } from "./omCircl";
 
 export const ETHEREUM_TOKENS: Record<ETokenSymbols, ITokenConstants> = {
     USDT,
@@ -51,5 +52,6 @@ export const ETHEREUM_TOKENS: Record<ETokenSymbols, ITokenConstants> = {
     omSnS,
     omQNod,
     omGGq,
+    omCircl,
 
 };
