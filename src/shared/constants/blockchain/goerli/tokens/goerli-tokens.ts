@@ -30,4 +30,6 @@ export const GOERLI_TOKENS: Record<ETokenSymbols, ITokenConstants> = {
     omQNod: USDT,
     omGGq: USDT,
     omCircl: USDT,
+    omTSpot: USDT,
+    
 };

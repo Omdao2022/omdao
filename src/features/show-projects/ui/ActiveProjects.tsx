@@ -4,7 +4,7 @@ import { IProjectProps, Project } from "./Project";
 import { useTranslation } from "react-i18next";
 import {
     COMMON_AG_DATA,
-    COMMON_CIRCL_DATA,
+    COMMON_TSpot_DATA,
     COMMON_TIGR_DATA,
 } from "../../../shared/constants/blockchain";
 import { TFunction } from "i18next";
@@ -19,9 +19,9 @@ const getActiveProjects = (t: TFunction) => {
         },
         
        {
-            title: COMMON_CIRCL_DATA.title,
-            symbol: COMMON_CIRCL_DATA.symbol,
-            href: COMMON_CIRCL_DATA.herf,
+            title: COMMON_TSpot_DATA.title,
+            symbol: COMMON_TSpot_DATA.symbol,
+            href: COMMON_TSpot_DATA.herf,
             buttonName: t("common.swap"),
         },
         {
