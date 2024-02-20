@@ -3,20 +3,21 @@ import { IProjectProps, Project } from "./Project";
 
 import { useTranslation } from "react-i18next";
 import {
-    COMMON_AG_DATA,
+   //COMMON_AG_DATA,
     COMMON_TSpot_DATA,
     COMMON_TIGR_DATA,
+    //COMMON_KRK_DATA
 } from "../../../shared/constants/blockchain";
 import { TFunction } from "i18next";
 
 const getActiveProjects = (t: TFunction) => {
     const projects: IProjectProps[] = [
-        {
-            title: COMMON_AG_DATA.title,
-            symbol: COMMON_AG_DATA.symbol,
-            href: COMMON_AG_DATA.herf,
-            buttonName: t("common.swap") + " omAra /",
-        },
+       // {
+            //title: COMMON_AG_DATA.title,
+            //symbol: COMMON_AG_DATA.symbol,
+            //href: COMMON_AG_DATA.herf,
+            //buttonName: t("common.swap") + " omAra /",
+        //},
         
         {
             title: COMMON_TSpot_DATA.title,
@@ -30,6 +31,12 @@ const getActiveProjects = (t: TFunction) => {
             href: COMMON_TIGR_DATA.herf,
             buttonName: t("common.swap"),
         },
+        //{
+            //title: COMMON_KRK_DATA.title,
+            //symbol: COMMON_KRK_DATA.symbol,
+            //href: COMMON_KRK_DATA.herf,
+            //buttonName: t("common.swap"),
+        //},
     ];
 
     return projects;
