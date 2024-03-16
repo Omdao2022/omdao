@@ -1,6 +1,6 @@
 {
   "swap": "Swap",
-  "swapTokens": "Swap tokens",
+  "swapTokens": "Swap tokens (Only works online Ethereum erc20)",
   "projects": "Projects",
   "connectWallet": "Connect wallet",
   "buy": "Buy",

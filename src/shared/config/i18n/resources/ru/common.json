@@ -1,6 +1,6 @@
 {
   "swap": "Обмен",
-  "swapTokens": "Обмен токенов",
+  "swapTokens": "Обмен токенов (Работает только в сети Ethereum erc20)",
   "projects": "Проекты",
   "connectWallet": "Подключить кошелек",
   "buy": "Купить",
