@@ -25,3 +25,5 @@ export * from "./omQNod";
 export * from "./omGGq";
 export * from "./omCircl";
 export * from "./omTSpot";
+export * from "./omEpGam";
+

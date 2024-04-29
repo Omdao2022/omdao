@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import {
    //COMMON_AG_DATA,
     COMMON_TIGR_DATA,
+    //COMMON_EpGam_DATA,
+    
 } from "../../../shared/constants/blockchain";
 import { TFunction } from "i18next";
 
@@ -24,6 +26,12 @@ const getActiveProjects = (t: TFunction) => {
             href: COMMON_TIGR_DATA.herf,
             buttonName: t("common.swap"),
         },
+      //  {
+        //    title: COMMON_EpGam_DATA.title,
+          //  symbol: COMMON_EpGam_DATA.symbol,
+          //  href: COMMON_EpGam_DATA.herf,
+          //  buttonName: t("common.swap"),
+        //},
         
     ];
 

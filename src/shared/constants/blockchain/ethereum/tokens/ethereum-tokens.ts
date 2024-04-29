@@ -26,6 +26,8 @@ import { omQNod } from "./omQNod";
 import { omGGq } from "./omGGq";
 import { omCircl } from "./omCircl";
 import { omTSpot } from "./omTSpot";
+import { omEpGam } from "./omEpGam";
+
 
 
 export const ETHEREUM_TOKENS: Record<ETokenSymbols, ITokenConstants> = {
@@ -56,5 +58,6 @@ export const ETHEREUM_TOKENS: Record<ETokenSymbols, ITokenConstants> = {
     omGGq,
     omCircl,
     omTSpot,
+    omEpGam,
 
 };
