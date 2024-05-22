@@ -6,6 +6,7 @@ import {
    //COMMON_AG_DATA,
     COMMON_TIGR_DATA,
     COMMON_EpGam_DATA,
+    COMMON_FBlocks_DATA,
     
 } from "../../../shared/constants/blockchain";
 import { TFunction } from "i18next";
@@ -30,6 +31,12 @@ const getActiveProjects = (t: TFunction) => {
             title: COMMON_EpGam_DATA.title,
             symbol: COMMON_EpGam_DATA.symbol,
             href: COMMON_EpGam_DATA.herf,
+            buttonName: t("common.swap"),
+        },
+        {
+            title: COMMON_FBlocks_DATA.title,
+            symbol: COMMON_FBlocks_DATA.symbol,
+            href: COMMON_FBlocks_DATA.herf,
             buttonName: t("common.swap"),
         },
         
