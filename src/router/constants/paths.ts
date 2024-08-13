@@ -1,5 +1,7 @@
 export const PATHS = {
   ROOT: '/',
-  PROJECTS: '/projects',
   REFERRAL: '/referral',
+  EXCHANGE: '/exchange',
+  PROJECTS: '/project',
+  JOINUS: '/joinus',
 };
