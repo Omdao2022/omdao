@@ -1,11 +1,18 @@
 import React, { FC, useState } from "react";
 import { Logo, Nav } from "../../../shared/ui";
 import { InputBox } from "./InputBox";
+import { CountrySelector } from './CountryPicker';
 import { FiUsers } from "react-icons/fi";
+import { COUNTRIES } from "./CountryPicker/lib/countries";
+import { SelectMenuOption } from "./CountryPicker/lib/types";
 
 export const JoinUsForm: FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
+
+    const [isOpen, setIsOpen] = useState(false);
+    // Default this to a country's code to preselect it
+    const [country, setCountry] = useState<SelectMenuOption["value"]>("BE");
 
   const inputProps1 = [
     {
@@ -32,13 +39,13 @@ export const JoinUsForm: FC = () => {
     {
       label: "Location",
       type: "text",
-      placeholder: "Enter something...",
+      placeholder: "Location",
       icon: <FiUsers />,
     },
     {
       label: "Address",
       type: "text",
-      placeholder: "Enter something...",
+      placeholder: "Address",
       icon: <FiUsers />,
     },
     {
@@ -79,9 +86,13 @@ export const JoinUsForm: FC = () => {
               />
             );
           })}
-          <select>
-            <option></option>
-          </select>
+          <CountrySelector
+            id={"country-selector"}
+            open={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            onChange={setCountry}
+            selectedValue={COUNTRIES.find((option) => option.value === country)}
+          />
           {inputProps2.map((item) => {
             return (
               <InputBox
@@ -95,7 +106,9 @@ export const JoinUsForm: FC = () => {
               />
             );
           })}
-          <button className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3">Next</button>
+          <button className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3">
+            Next
+          </button>
         </div>
       </div>
     </>
