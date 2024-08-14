@@ -9,6 +9,8 @@
     "@ethersproject/wallet": "^5.7.0",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
+    "@sumsub/websdk": "^2.3.3",
+    "@sumsub/websdk-react": "^2.3.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

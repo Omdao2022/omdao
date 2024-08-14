@@ -95,7 +95,7 @@ export const JoinUsForm: FC = () => {
               />
             );
           })}
-          <button className="col-span-2 mt-5 bg-[#CB4D8C]">Next</button>
+          <button className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3">Next</button>
         </div>
       </div>
     </>
