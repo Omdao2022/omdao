@@ -7,6 +7,48 @@ export const JoinUsForm: FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
+  const inputProps1 = [
+    {
+      label: "First Name",
+      type: "text",
+      placeholder: "John",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Second Name",
+      type: "text",
+      placeholder: "Doe",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Birthday",
+      type: "date",
+      placeholder: "1990-01-01",
+      icon: <FiUsers />,
+    },
+  ];
+
+  const inputProps2 = [
+    {
+      label: "Location",
+      type: "text",
+      placeholder: "Enter something...",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Address",
+      type: "text",
+      placeholder: "Enter something...",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Zipcode",
+      type: "text",
+      placeholder: "70000",
+      icon: <FiUsers />,
+    },
+  ];
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     // Example validation
@@ -22,66 +64,39 @@ export const JoinUsForm: FC = () => {
         <div className="flex flex-row items-center justify-center">
           <h2 className="text-[#CB4D8C] font-sans">Join Us</h2>
         </div>
-        <div className="flex flex-row">
-          <InputBox
-            label="First Name"
-            type="text"
-            placeholder="John"
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-          <InputBox
-            label="Second Name"
-            type="text"
-            placeholder="Doe"
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
+
+        <div className="grid md:grid-rows-2 grid-rows-1">
+          {inputProps1.map((item) => {
+            return (
+              <InputBox
+                label={item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                value={inputValue}
+                onChange={handleChange}
+                error={error}
+                icon={item.icon}
+              />
+            );
+          })}
+          <select>
+            <option></option>
+          </select>
+          {inputProps2.map((item) => {
+            return (
+              <InputBox
+                label={item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                value={inputValue}
+                onChange={handleChange}
+                error={error}
+                icon={item.icon}
+              />
+            );
+          })}
+          <button className="col-span-2 mt-5 bg-[#CB4D8C]">Next</button>
         </div>
-        <div className="flex flex-row">
-          <InputBox
-            label="Birthday"
-            type="date"
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-          <InputBox
-            label="Your Input"
-            type="text"
-            placeholder="Enter something..."
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-        </div>
-        <div className="flex flex-row">
-          <InputBox
-            label="Your Input"
-            type="text"
-            placeholder="Enter something..."
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-          <InputBox
-            label="Your Input"
-            type="text"
-            placeholder="Enter something..."
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-        </div>
-        <button>Next</button>
       </div>
     </>
   );
