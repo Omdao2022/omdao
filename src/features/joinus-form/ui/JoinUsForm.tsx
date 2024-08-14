@@ -1,11 +1,60 @@
 import React, { FC, useState } from "react";
 import { Logo, Nav } from "../../../shared/ui";
 import { InputBox } from "./InputBox";
+import { CountrySelector } from './CountryPicker';
 import { FiUsers } from "react-icons/fi";
+import { COUNTRIES } from "./CountryPicker/lib/countries";
+import { SelectMenuOption } from "./CountryPicker/lib/types";
 
 export const JoinUsForm: FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
+
+    const [isOpen, setIsOpen] = useState(false);
+    // Default this to a country's code to preselect it
+    const [country, setCountry] = useState<SelectMenuOption["value"]>("BE");
+
+  const inputProps1 = [
+    {
+      label: "First Name",
+      type: "text",
+      placeholder: "John",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Second Name",
+      type: "text",
+      placeholder: "Doe",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Birthday",
+      type: "date",
+      placeholder: "1990-01-01",
+      icon: <FiUsers />,
+    },
+  ];
+
+  const inputProps2 = [
+    {
+      label: "Location",
+      type: "text",
+      placeholder: "Location",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Address",
+      type: "text",
+      placeholder: "Address",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Zipcode",
+      type: "text",
+      placeholder: "70000",
+      icon: <FiUsers />,
+    },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -22,66 +71,45 @@ export const JoinUsForm: FC = () => {
         <div className="flex flex-row items-center justify-center">
           <h2 className="text-[#CB4D8C] font-sans">Join Us</h2>
         </div>
-        <div className="flex flex-row">
-          <InputBox
-            label="First Name"
-            type="text"
-            placeholder="John"
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
+
+        <div className="grid md:grid-rows-2 grid-rows-1">
+          {inputProps1.map((item) => {
+            return (
+              <InputBox
+                label={item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                value={inputValue}
+                onChange={handleChange}
+                error={error}
+                icon={item.icon}
+              />
+            );
+          })}
+          <CountrySelector
+            id={"country-selector"}
+            open={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            onChange={setCountry}
+            selectedValue={COUNTRIES.find((option) => option.value === country)}
           />
-          <InputBox
-            label="Second Name"
-            type="text"
-            placeholder="Doe"
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
+          {inputProps2.map((item) => {
+            return (
+              <InputBox
+                label={item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                value={inputValue}
+                onChange={handleChange}
+                error={error}
+                icon={item.icon}
+              />
+            );
+          })}
+          <button className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3">
+            Next
+          </button>
         </div>
-        <div className="flex flex-row">
-          <InputBox
-            label="Birthday"
-            type="date"
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-          <InputBox
-            label="Your Input"
-            type="text"
-            placeholder="Enter something..."
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-        </div>
-        <div className="flex flex-row">
-          <InputBox
-            label="Your Input"
-            type="text"
-            placeholder="Enter something..."
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-          <InputBox
-            label="Your Input"
-            type="text"
-            placeholder="Enter something..."
-            value={inputValue}
-            onChange={handleChange}
-            error={error}
-            icon={<FiUsers />}
-          />
-        </div>
-        <button>Next</button>
       </div>
     </>
   );
