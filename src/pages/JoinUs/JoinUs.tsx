@@ -5,16 +5,16 @@ import { KycForm } from '../../features/kyc-form';
 export const JoinUs: FC = () => {
   const [currentScene, setCurrentScene] = useState<number>(0);
 
-  const scenes = [<JoinUsForm />, <KycForm />];
-
-
+  
+  
   const nextScene = () => {
     setCurrentScene((prev) => (prev + 1) % scenes.length);
   };
-
+  
+  const scenes = [<JoinUsForm nextScene={ nextScene } />, <KycForm />];
 
   return (
-    <div className="lg:w-2/3 flex flex-col justify-center m-auto bg-gray-400 bg-opacity-10 backdrop-blur-sm inset-0 rounded-xl p-10 relative overflow-hidden h-[65vh]">
+    <div className="lg:w-2/3 flex flex-col justify-center m-auto bg-gray-400 bg-opacity-10 backdrop-blur-sm inset-0 rounded-xl p-10 pt-14 relative overflow-hidden h-[65vh]">
       {scenes.map((scene, index) => (
         <div
           key={index}

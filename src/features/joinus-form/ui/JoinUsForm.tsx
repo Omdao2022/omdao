@@ -6,7 +6,17 @@ import { FiUsers } from "react-icons/fi";
 import { COUNTRIES } from "./CountryPicker/lib/countries";
 import { SelectMenuOption } from "./CountryPicker/lib/types";
 
-export const JoinUsForm: FC = () => {
+interface JoinUsFormProps {
+  nextScene: () => void; // Define the type of nextScene
+}
+
+interface FormData {
+  firstName: string,
+  lastName: string,
+
+}
+
+export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
@@ -31,6 +41,12 @@ export const JoinUsForm: FC = () => {
       label: "Birthday",
       type: "date",
       placeholder: "1990-01-01",
+      icon: <FiUsers />,
+    },
+    {
+      label: "Email",
+      type: "email",
+      placeholder: "example@mail.com",
       icon: <FiUsers />,
     },
   ];
@@ -106,7 +122,7 @@ export const JoinUsForm: FC = () => {
               />
             );
           })}
-          <button className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3">
+          <button className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3 active:scale-90 transition-transform ease-in-out delay-150" onClick={nextScene}>
             Next
           </button>
         </div>
