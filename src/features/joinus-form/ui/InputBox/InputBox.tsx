@@ -3,7 +3,6 @@ import { CustomInputProps } from '../../types';
 
 export const InputBox: FC<CustomInputProps> = ({
   label,
-  name,
   type = "text",
   placeholder,
   value,
@@ -35,7 +34,6 @@ export const InputBox: FC<CustomInputProps> = ({
           )}
           <input
             type={type}
-            name={name}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
