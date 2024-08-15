@@ -107,7 +107,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex flex-row items-center justify-center gap-4">
+        <div className=" mt-8 flex flex-row items-center justify-center gap-4">
           <FiUsers className=" text-4xl text-[#CB4D8C]" />
           <h2 className="text-[#CB4D8C] font-sans">Join Us</h2>
         </div>
@@ -159,7 +159,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
             );
           })}
           <button
-            className="col-span-2 mt-5 bg-[#CB4D8C] rounded-md p-3 active:scale-90 transition-transform ease-in-out delay-150"
+            className="col-span-2 mt-8 bg-[#CB4D8C] rounded-md py-2 m-2 active:scale-90 transition-transform ease-in-out delay-150"
             onClick={nextScene}
           >
             Next

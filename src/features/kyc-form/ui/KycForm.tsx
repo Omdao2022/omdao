@@ -10,8 +10,8 @@ interface Token {
 export const KycForm: FC = () => {
   const [accessToken, setAccessToken] = useState<Token>({
     token:
-      "_act-sbx-jwt-eyJhbGciOiJub25lIn0.eyJqdGkiOiJfYWN0LXNieC0wNzgyZDhiZC00OGNjLTQ4MDItYTc3My1lM2RmOTY0Y2M0NzItdjIiLCJ1cmwiOiJodHRwczovL2FwaS5zdW1zdWIuY29tIn0.-v2",
-    userId: "1",
+      "",
+    userId: "",
   });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,6 +27,7 @@ export const KycForm: FC = () => {
           throw new Error("Network response was not ok");
         }
         const result: Token = await response.json();
+        console.log("response==================>", result);
         setAccessToken(result);
       } catch (error) {
         setError(error instanceof Error ? error.message : "An error occurred");
@@ -40,7 +41,7 @@ export const KycForm: FC = () => {
 
   return (
     <div>
-      {accessToken ? (
+      {accessToken.token!=='' ? (
         <SumsubWebSdk
           accessToken={accessToken.token}
           expirationHandler={() => Promise.resolve(accessToken.token)}
