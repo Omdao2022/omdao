@@ -6,6 +6,7 @@ import {
   RootLayout,
   ReferralPage,
   ReferralTransactionsPage,
+  JoinUs
 } from '../pages';
 import { PATHS } from './constants';
 
@@ -14,8 +15,16 @@ export const appRouter = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: PATHS.ROOT,
+        path: PATHS.JOINUS,
+        element: <JoinUs />,
+      },
+      {
+        path: PATHS.EXCHANGE,
         element: <ExchangePage />,
+      },
+      {
+        path: PATHS.ROOT,
+        element: <ProjectsPage />,
       },
       {
         path: PATHS.PROJECTS,
@@ -52,7 +61,7 @@ export const appRouter = createBrowserRouter([
         element: <ReferralTransactionsPage />,
       },
       {
-        path: '*',
+        path: "*",
         element: <Navigate to={PATHS.ROOT} replace />,
       },
     ],

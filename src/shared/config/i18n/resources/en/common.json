@@ -9,8 +9,8 @@
   "purchaseToken": "Purchase of a {{symbol}}",
   "loading": "Loading",
   "routes": {
-    "root": "Swap",
-    "projects": "Projects",
+    "root": "Projects",
+    "exchange": "Swap",
     "referral": "Referral"
   },
   "form": {
