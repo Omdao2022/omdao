@@ -40,9 +40,10 @@ export const KycForm: FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="m-6">
       {accessToken.token!=='' ? (
         <SumsubWebSdk
+          className="rounded-md"
           accessToken={accessToken.token}
           expirationHandler={() => Promise.resolve(accessToken.token)}
           config={{
