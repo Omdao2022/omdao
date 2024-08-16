@@ -1,18 +1,51 @@
-import React, { FC, useState, useEffect } from 'react';
-import SumsubWebSdk from '@sumsub/websdk-react';
+import React, { FC, useState, useEffect } from "react";
+import SumsubWebSdk from "@sumsub/websdk-react";
+
+interface Token {
+  token: string;
+  userId: string;
+  // Add other fields based on your API response
+}
 
 export const KycForm: FC = () => {
-  const [accessToken, setAccessToken] = useState<string>(
-    "_act-sbx-jwt-eyJhbGciOiJub25lIn0.eyJqdGkiOiJfYWN0LXNieC0yZjEyMGU1NC0zMGMyLTQ4NDAtOWYxMS03ODEwN2IyNGM0NmQtdjIiLCJ1cmwiOiJodHRwczovL2FwaS5zdW1zdWIuY29tIn0.-v2"
-  );
-    const applicantEmail = "";
-    const applicantPhone = "";
+  const [accessToken, setAccessToken] = useState<Token>({
+    token:
+      "",
+    userId: "",
+  });
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const applicantEmail = "";
+  const applicantPhone = "";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("getting token now...");
+      try {
+        const response = await fetch("http://127.0.0.1:5000/api/getToken");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const result: Token = await response.json();
+        console.log("response==================>", result);
+        setAccessToken(result);
+      } catch (error) {
+        setError(error instanceof Error ? error.message : "An error occurred");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div>
-      {accessToken ? (
+    <div className="m-6">
+      {accessToken.token!=='' ? (
         <SumsubWebSdk
-          accessToken={accessToken}
-          expirationHandler={() => Promise.resolve(accessToken)}
+          className="rounded-md"
+          accessToken={accessToken.token}
+          expirationHandler={() => Promise.resolve(accessToken.token)}
           config={{
             lang: "ru-RU",
             email: applicantEmail,
@@ -46,4 +79,4 @@ export const KycForm: FC = () => {
       )}
     </div>
   );
-}
+};
