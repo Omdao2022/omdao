@@ -63,10 +63,10 @@ export const COUNTRIES = [
     title: "Barbados",
     value: "BB",
   },
-  {
-    title: "Belarus",
-    value: "BY",
-  },
+  // {
+  //   title: "Belarus",
+  //   value: "BY",
+  // },
   {
     title: "Belgium",
     value: "BE",
@@ -179,10 +179,10 @@ export const COUNTRIES = [
     title: "Croatia",
     value: "HR",
   },
-  {
-    title: "Cuba",
-    value: "CU",
-  },
+  // {
+  //   title: "Cuba",
+  //   value: "CU",
+  // },
   {
     title: "Curacao",
     value: "CW",
@@ -195,10 +195,10 @@ export const COUNTRIES = [
     title: "Czech Republic",
     value: "CZ",
   },
-  {
-    title: "Democratic Republic of the Congo",
-    value: "CD",
-  },
+  // {
+  //   title: "Democratic Republic of the Congo",
+  //   value: "CD",
+  // },
   {
     title: "Denmark",
     value: "DK",
@@ -347,14 +347,14 @@ export const COUNTRIES = [
     title: "Indonesia",
     value: "ID",
   },
-  {
-    title: "Iran",
-    value: "IR",
-  },
-  {
-    title: "Iraq",
-    value: "IQ",
-  },
+  // {
+  //   title: "Iran",
+  //   value: "IR",
+  // },
+  // {
+  //   title: "Iraq",
+  //   value: "IQ",
+  // },
   {
     title: "Ireland",
     value: "IE",
@@ -371,10 +371,10 @@ export const COUNTRIES = [
     title: "Italy",
     value: "IT",
   },
-  {
-    title: "Ivory Coast",
-    value: "CI",
-  },
+  // {
+  //   title: "Ivory Coast",
+  //   value: "CI",
+  // },
   {
     title: "Jamaica",
     value: "JM",
@@ -431,10 +431,10 @@ export const COUNTRIES = [
     title: "Lesotho",
     value: "LS",
   },
-  {
-    title: "Liberia",
-    value: "LB",
-  },
+  // {
+  //   title: "Liberia",
+  //   value: "LB",
+  // },
   {
     title: "Libya",
     value: "LY",
@@ -571,10 +571,10 @@ export const COUNTRIES = [
     title: "Nigeria",
     value: "NG",
   },
-  {
-    title: "North Korea",
-    value: "KP",
-  },
+  // {
+  //   title: "North Korea",
+  //   value: "KP",
+  // },
   {
     title: "Northern Mariana Islands",
     value: "MP",
@@ -643,10 +643,10 @@ export const COUNTRIES = [
     title: "Romania",
     value: "RO",
   },
-  {
-    title: "Russia",
-    value: "RU",
-  },
+  // {
+  //   title: "Russia",
+  //   value: "RU",
+  // },
   {
     title: "Rwanda",
     value: "RW",
@@ -747,10 +747,10 @@ export const COUNTRIES = [
     title: "Sri Lanka",
     value: "LK",
   },
-  {
-    title: "Sudan",
-    value: "SD",
-  },
+  // {
+  //   title: "Sudan",
+  //   value: "SD",
+  // },
   {
     title: "Suriname",
     value: "SR",
@@ -767,10 +767,10 @@ export const COUNTRIES = [
     title: "Switzerland",
     value: "CH",
   },
-  {
-    title: "Syria",
-    value: "SY",
-  },
+  // {
+  //   title: "Syria",
+  //   value: "SY",
+  // },
   {
     title: "Taiwan",
     value: "TW",
@@ -875,8 +875,8 @@ export const COUNTRIES = [
     title: "Zambia",
     value: "ZM",
   },
-  {
-    title: "Zimbabwe",
-    value: "ZW",
-  },
+  // {
+  //   title: "Zimbabwe",
+  //   value: "ZW",
+  // },
 ] as const;
