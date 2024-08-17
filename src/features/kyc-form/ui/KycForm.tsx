@@ -9,8 +9,7 @@ interface Token {
 
 export const KycForm: FC = () => {
   const [accessToken, setAccessToken] = useState<Token>({
-    token:
-      "",
+    token: "",
     userId: "",
   });
   const [loading, setLoading] = useState<boolean>(true);
@@ -41,7 +40,7 @@ export const KycForm: FC = () => {
 
   return (
     <div className="m-6">
-      {accessToken.token!=='' ? (
+      {accessToken.token !== "" ? (
         <SumsubWebSdk
           className="rounded-md"
           accessToken={accessToken.token}
@@ -77,9 +76,7 @@ export const KycForm: FC = () => {
       ) : (
         <></>
       )}
-      <div>
-        
-        </div>
+      <div><button>Next</button></div>
     </div>
   );
 };
