@@ -14,7 +14,9 @@ export const JoinUs: FC = () => {
   const scenes = [<JoinUsForm nextScene={ nextScene } />, <KycForm />];
 
   return (
+
     <div className="lg:w-2/3 flex flex-col justify-center overflow-y-auto overflow-x-hidden m-auto bg-gray-400 bg-opacity-10 backdrop-blur-sm inset-0 rounded-xl pt-14 relative h-[75vh]">
+
       {scenes.map((scene, index) => (
         <div
           key={index}

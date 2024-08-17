@@ -1,11 +1,5 @@
-import React, { FC, useState, useEffect } from "react";
-import SumsubWebSdk from "@sumsub/websdk-react";
-
-interface Token {
-  token: string;
-  userId: string;
-  // Add other fields based on your API response
-}
+import React, { FC, useState, useEffect } from 'react';
+import SumsubWebSdk from '@sumsub/websdk-react';
 
 export const KycForm: FC = () => {
   const [accessToken, setAccessToken] = useState<Token>({
@@ -43,9 +37,11 @@ export const KycForm: FC = () => {
     <div className="m-6">
       {accessToken.token!=='' ? (
         <SumsubWebSdk
+
           className="rounded-md"
           accessToken={accessToken.token}
           expirationHandler={() => Promise.resolve(accessToken.token)}
+
           config={{
             lang: "ru-RU",
             email: applicantEmail,
@@ -79,4 +75,4 @@ export const KycForm: FC = () => {
       )}
     </div>
   );
-};
+}
