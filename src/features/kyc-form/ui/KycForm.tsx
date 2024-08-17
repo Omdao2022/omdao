@@ -77,6 +77,9 @@ export const KycForm: FC = () => {
       ) : (
         <></>
       )}
+      <div>
+        
+        </div>
     </div>
   );
 };
