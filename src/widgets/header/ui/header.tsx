@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Logo, Nav } from '../../../shared/ui';
 import { Web3Button } from '@web3modal/react';
 import { ButtonChangeLanguage } from './button-change-language';
+import { BtnJoinUs } from './btn-joinus';
 import { useTranslation } from 'react-i18next';
 
 export const Header: FC = () => {
@@ -14,6 +15,7 @@ export const Header: FC = () => {
         <div className="flex items-center justify-self-center gap-4 lg:justify-self-start">
           <ButtonChangeLanguage />
           <Web3Button label={t('common.connectWallet')} />
+          <BtnJoinUs />
         </div>
       </div>
     </header>

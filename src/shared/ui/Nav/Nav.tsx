@@ -12,7 +12,7 @@ export const Nav: FC = () => {
 
   const links: { pathName: string; label: string }[] = useMemo(() => {
     return Object.entries(PATHS)
-      .filter(([key]) => key !== 'REFERRAL')
+      .filter(([key]) => key !== 'REFERRAL' && key !== 'EXCHANGE' && key !== 'JOINUS' && key !== 'PROJECTS')
       .map(([key, value]) => {
         return {
           pathName: value,
