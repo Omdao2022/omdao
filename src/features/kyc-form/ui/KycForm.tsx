@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import SumsubWebSdk from "@sumsub/websdk-react";
-
+import { useRecoilState } from "recoil";
+import { clientAtom } from "../../../recoil/atom/clientAtom";
 interface Token {
   token: string;
   userId: string;
@@ -17,11 +18,17 @@ export const KycForm: FC = () => {
   const applicantEmail = "";
   const applicantPhone = "";
 
+  //---begin use recoil ---//
+
+  const [clientState, setClientState] = useRecoilState(clientAtom);
+
+  //---end use recoil ---//
+
   useEffect(() => {
     const fetchData = async () => {
       console.log("getting token now...");
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/getToken");
+        const response = await fetch(`http://127.0.0.1:5000/api/getToken/${clientState.userId}`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

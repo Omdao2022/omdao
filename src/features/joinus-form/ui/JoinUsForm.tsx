@@ -5,6 +5,8 @@ import { CountrySelector } from "./CountryPicker";
 import { FiUsers } from "react-icons/fi";
 import { COUNTRIES } from "./CountryPicker/lib/countries";
 import { SelectMenuOption } from "./CountryPicker/lib/types";
+import { useRecoilState } from "recoil";
+import { clientAtom } from "../../../recoil/atom/clientAtom";
 
 interface JoinUsFormProps {
   nextScene: () => void; // Define the type of nextScene
@@ -39,6 +41,13 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
     address: "",
     zipcode: "",
   });
+
+  //--- begin use recoil ---//
+  const [clientState, setClientState] = useRecoilState(clientAtom);
+
+  console.log("original state:", clientState);
+
+  //--- end use recoil ---//
 
   const inputProps1 = [
     {
@@ -108,7 +117,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
     const jsonData = JSON.stringify(formData);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/register", {
+      const response = await fetch(`http://127.0.0.1:5000/api/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Specify that we're sending JSON
@@ -121,6 +130,10 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
       }
 
       const responseData = await response.json();
+
+      console.log("original state:", clientState);
+
+      setClientState({userId: responseData._id});
       console.log(responseData); // Handle success response
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
