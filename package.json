@@ -33,6 +33,8 @@
     "mobx": "^6.6.2",
     "mobx-react-lite": "^3.4.0",
     "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
+    "react-confetti-explosion": "^2.1.2",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.0",
     "react-icons": "^5.2.1",

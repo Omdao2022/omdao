@@ -1,17 +1,21 @@
 import React, { FC, useState } from 'react';
 import { JoinUsForm } from '../../features/joinus-form';
 import { KycForm } from '../../features/kyc-form';
+import { KycConfirmForm } from '../../features/kyc-confirm-form';
+import { tabAtom } from '../../recoil/atom/tabAtom';
+import { useRecoilState } from 'recoil';
 
 export const JoinUs: FC = () => {
-  const [currentScene, setCurrentScene] = useState<number>(0);
+  const [tabState, setTabState] = useRecoilState(tabAtom);
 
   
   
   const nextScene = () => {
-    setCurrentScene((prev) => (prev + 1) % scenes.length);
+    setTabState((oldState) => { console.log(oldState); console.log({ tabId: (oldState.tabId + 1) % scenes.length }); return { tabId: (oldState.tabId + 1) % scenes.length }; });
+    
   };
   
-  const scenes = [<JoinUsForm nextScene={ nextScene } />, <KycForm />];
+  const scenes = [<JoinUsForm nextScene={nextScene} />, <KycForm nextScene={ nextScene } />, <KycConfirmForm/>];
 
   return (
     <div className="lg:w-2/3 flex flex-col justify-center overflow-y-auto overflow-x-hidden m-auto bg-gray-400 bg-opacity-10 backdrop-blur-sm inset-0 rounded-xl pt-14 relative h-[75vh]">
@@ -19,9 +23,9 @@ export const JoinUs: FC = () => {
         <div
           key={index}
           className={`absolute h-full inset-0 transition-transform duration-700 ease-in-out w-full ${
-            index === currentScene
+            index === tabState.tabId
               ? "translate-x-0"
-              : index < currentScene
+              : index < tabState.tabId
               ? "-translate-x-full"
               : "translate-x-full"
           }`}

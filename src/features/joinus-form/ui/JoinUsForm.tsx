@@ -2,7 +2,15 @@ import React, { FC, useState } from "react";
 import { Logo, Nav } from "../../../shared/ui";
 import { InputBox } from "./InputBox";
 import { CountrySelector } from "./CountryPicker";
-import { FiUsers } from "react-icons/fi";
+import {
+  FiUsers,
+  FiMapPin,
+  FiNavigation,
+  FiMail,
+  FiCalendar,
+  FiUserCheck,
+  FiVoicemail,
+} from "react-icons/fi";
 import { COUNTRIES } from "./CountryPicker/lib/countries";
 import { SelectMenuOption } from "./CountryPicker/lib/types";
 import { useRecoilState } from "recoil";
@@ -55,7 +63,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
       name: "firstName" as keyof FormData,
       type: "text",
       placeholder: "John",
-      icon: <FiUsers />,
+      icon: <FiUserCheck />,
     },
     {
       label: "Last Name",
@@ -69,7 +77,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
       name: "email" as keyof FormData,
       type: "email",
       placeholder: "example@mail.com",
-      icon: <FiUsers />,
+      icon: <FiMail />,
     },
   ];
 
@@ -79,21 +87,21 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
       name: "location" as keyof FormData,
       type: "text",
       placeholder: "Location",
-      icon: <FiUsers />,
+      icon: <FiMapPin />,
     },
     {
       label: "Address",
       name: "address" as keyof FormData,
       type: "text",
       placeholder: "Address",
-      icon: <FiUsers />,
+      icon: <FiNavigation />,
     },
     {
       label: "Zipcode",
       name: "zipcode" as keyof FormData,
       type: "text",
       placeholder: "70000",
-      icon: <FiUsers />,
+      icon: <FiVoicemail />,
     },
   ];
 
@@ -172,7 +180,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
             value={formData.birthday.toString()}
             onChange={handleChange}
             error={error}
-            icon={<FiUsers />}
+            icon={<FiCalendar />}
           />
           <CountrySelector
             id={"country-selector"}

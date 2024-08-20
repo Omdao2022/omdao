@@ -2,12 +2,18 @@ import { FC } from 'react';
 import { FiUsers } from "react-icons/fi";
 
 import { useNavigate } from 'react-router-dom';
-
+import { showToast } from '../../../helper/ToastNotify';
+import { useAccount } from 'wagmi';
 
 export const BtnJoinUs: FC = () => {
+  const { isConnected } = useAccount();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
+    if (!isConnected) {
+      showToast("info", "please connect wallet!");
+      return;
+    }
     navigate('/joinus');
   }
 
