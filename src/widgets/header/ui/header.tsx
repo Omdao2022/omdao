@@ -4,6 +4,7 @@ import { Web3Button } from '@web3modal/react';
 import { ButtonChangeLanguage } from './button-change-language';
 import { BtnJoinUs } from './btn-joinus';
 import { useTranslation } from 'react-i18next';
+import { Web3Sign } from '../../../features/web3-sign';
 
 export const Header: FC = () => {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ export const Header: FC = () => {
           <ButtonChangeLanguage />
           <Web3Button label={t('common.connectWallet')} />
           <BtnJoinUs />
+          <Web3Sign />
         </div>
       </div>
     </header>
