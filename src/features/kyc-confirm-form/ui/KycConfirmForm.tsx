@@ -15,12 +15,11 @@ export const KycConfirmForm: FC = () => {
 
   const handleExplosion = () => {
     setTimeout(() => {
-      
       setIsExploding(true);
-    }, 400);
+    }, 300);
     setTimeout(() => {
       setIsExploding(false);
-    }, 3000); // Adjust duration as needed
+    }, 2000); // Adjust duration as needed
   };
 
   return (
@@ -30,7 +29,7 @@ export const KycConfirmForm: FC = () => {
           <ConfettiExplosion
             particleCount={500} // Adjust particle count
             particleSize={5} // Adjust particle size
-            duration={2000} // Adjust duration
+            duration={1000} // Adjust duration
             force={0.1} // Adjust explosion force
             width={800} // Adjust explosion width
             height={800} // Adjust explosion height
@@ -40,8 +39,10 @@ export const KycConfirmForm: FC = () => {
       </div>
       <div className=" absolute text-center  font-sans ">
         <h2 className=" font-sans">Congrats! Now you registered</h2>
-        <p>There will be message sign step.</p>
-        <Web3Sign/>
+        <p>Please login using SIWE.</p>
+        <div className="w-full flex flex-row justify-center">
+          <Web3Sign />
+        </div>
       </div>
     </div>
   );

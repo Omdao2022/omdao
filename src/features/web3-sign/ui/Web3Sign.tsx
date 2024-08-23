@@ -5,6 +5,7 @@ import { userAtom } from "../../../recoil/atom/userAtom";
 import { useRecoilState } from "recoil";
 import { redirect } from "react-router";
 import { useNavigate } from "react-router";
+import { showToast } from "../../../helper/ToastNotify";
 
 export const Web3Sign: FC = () => {
   const scheme = window.location.protocol.slice(0, -1);
@@ -61,6 +62,7 @@ async function createSiweMessage(
     const result = await res.text();
     if (result) {
       setUserInfo({ ...userInfo, joined: true });
+      showToast("success", "Signature verified. Logged in");
       navigate("/projects");
     }
     
@@ -75,7 +77,12 @@ async function createSiweMessage(
   return (
     <>
       <div>
-        <button onClick={signInWithEthereum}>SIWE</button>
+        <button
+          className="flex flex-row gap-2 items-center bg-[#CB4D8C] text-sm font-medium rounded-lg p-[10px] hover:bg-[#D05F98] transation duration-150 ease-in-out active:scale-90"
+          onClick={signInWithEthereum}
+        >
+          SIWE
+        </button>
       </div>
     </>
   );
