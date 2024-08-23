@@ -1,6 +1,10 @@
 import React, { FC, useState, useEffect } from "react";
 import { providers } from "ethers";
 import { SiweMessage } from "siwe";
+import { userAtom } from "../../../recoil/atom/userAtom";
+import { useRecoilState } from "recoil";
+import { redirect } from "react-router";
+import { useNavigate } from "react-router";
 
 export const Web3Sign: FC = () => {
   const scheme = window.location.protocol.slice(0, -1);
@@ -8,27 +12,58 @@ export const Web3Sign: FC = () => {
   const origin = window.location.origin;
   const provider = new providers.Web3Provider(window.ethereum);
 
-  function createSiweMessage(address: string, statement: string): string {
-    const message = new SiweMessage({
-      scheme,
-      domain,
-      address,
-      statement,
-      uri: origin,
-      version: "1",
-      chainId: 1,
-    });
-    console.log("message for siwe=======>", message);
-    return message.prepareMessage();
-  }
+  const BACKEND_ADDR = "http://localhost:5000/api";
 
+  const [userInfo, setUserInfo] = useRecoilState(userAtom);
+  const navigate = useNavigate();
+
+async function createSiweMessage(
+  address: string,
+  statement: string
+): Promise<string> {
+  const res = await fetch(`${BACKEND_ADDR}/getNonce`, {
+    credentials: "include",
+  });
+
+  const result = await res.json();
+
+  const message = new SiweMessage({
+    scheme,
+    domain,
+    address,
+    statement,
+    uri: origin,
+    version: "1",
+    chainId: 1,
+    nonce: result.nonce
+  });
+
+  console.log("message for siwe=======>", message);
+  return message.prepareMessage();
+}
   async function signInWithEthereum() {
     const signer = await provider.getSigner();
-    const message = createSiweMessage(
+    const message = await createSiweMessage(
       await signer.getAddress(),
       "Sign in with Ethereum to the app."
     );
-    console.log(await signer.signMessage(message));
+    const signature = await signer.signMessage(message);
+
+    const res = await fetch(`${BACKEND_ADDR}/verifySignature`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message, signature }),
+      credentials: "include",
+    });
+
+    const result = await res.text();
+    if (result) {
+      setUserInfo({ ...userInfo, joined: true });
+      navigate("/projects");
+    }
+    
   }
 
   function connectWallet() {
@@ -41,7 +76,6 @@ export const Web3Sign: FC = () => {
     <>
       <div>
         <button onClick={signInWithEthereum}>SIWE</button>
-        <button onClick={connectWallet}>WalletCon</button>
       </div>
     </>
   );

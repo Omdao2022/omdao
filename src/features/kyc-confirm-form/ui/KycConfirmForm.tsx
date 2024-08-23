@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { tabAtom } from "../../../recoil/atom/tabAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { Web3Sign } from "../../web3-sign";
 
 
 export const KycConfirmForm: FC = () => {
@@ -40,6 +41,7 @@ export const KycConfirmForm: FC = () => {
       <div className=" absolute text-center  font-sans ">
         <h2 className=" font-sans">Congrats! Now you registered</h2>
         <p>There will be message sign step.</p>
+        <Web3Sign/>
       </div>
     </div>
   );

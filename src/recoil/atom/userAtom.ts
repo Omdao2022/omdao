@@ -11,6 +11,7 @@ export const userAtom = atom({
     location: 'Texas',
     address: '1710 Kenwick Pl',
     zipcode: '1234',
-    joined: !false
+    kycPassed: false,
+    joined: false
   }
 });
