@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import { Logo, Nav } from '../../../shared/ui';
+import { Logo, Nav } from './shared/ui';
 import { Web3Button } from '@web3modal/react';
-import { ButtonChangeLanguage } from './button-change-language';
-import { BtnJoinUs } from './btn-joinus';
+import { ButtonChangeLanguage } from './widgets/header/ui/button-change-language';
+import { BtnJoinUs } from './widgets/header/ui/btn-joinus';
 import { BtnUser } from './btn-user';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
-import { userAtom } from '../../../recoil/atom/userAtom';
+import { userAtom } from './recoil/atom/userAtom';
 
 export const Header: FC = () => {
   const [userState] = useRecoilState(userAtom);
