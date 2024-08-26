@@ -7,6 +7,7 @@ import { BtnUser } from './btn-user';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '../../../recoil/atom/userAtom';
+import { Web3Sign } from '../../../features/web3-sign';
 
 export const Header: FC = () => {
   const [userState] = useRecoilState(userAtom);
@@ -23,6 +24,7 @@ export const Header: FC = () => {
           {
             !userState.joined ? <BtnJoinUs /> : <BtnUser/>
           }
+          <Web3Sign />
         </div>
       </div>
     </header>

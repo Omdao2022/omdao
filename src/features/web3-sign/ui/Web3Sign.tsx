@@ -18,30 +18,30 @@ export const Web3Sign: FC = () => {
   const [userInfo, setUserInfo] = useRecoilState(userAtom);
   const navigate = useNavigate();
 
-async function createSiweMessage(
-  address: string,
-  statement: string
-): Promise<string> {
-  const res = await fetch(`${BACKEND_ADDR}/getNonce`, {
-    credentials: "include",
-  });
+  async function createSiweMessage(
+    address: string,
+    statement: string
+  ): Promise<string> {
+    const res = await fetch(`${BACKEND_ADDR}/getNonce`, {
+      credentials: "include",
+    });
 
-  const result = await res.json();
+    const result = await res.json();
 
-  const message = new SiweMessage({
-    scheme,
-    domain,
-    address,
-    statement,
-    uri: origin,
-    version: "1",
-    chainId: 1,
-    nonce: result.nonce
-  });
+    const message = new SiweMessage({
+      scheme,
+      domain,
+      address,
+      statement,
+      uri: origin,
+      version: "1",
+      chainId: 1,
+      nonce: result.nonce,
+    });
 
-  console.log("message for siwe=======>", message);
-  return message.prepareMessage();
-}
+    console.log("message for siwe=======>", message);
+    return message.prepareMessage();
+  }
   async function signInWithEthereum() {
     const signer = await provider.getSigner();
     const message = await createSiweMessage(
@@ -65,7 +65,6 @@ async function createSiweMessage(
       showToast("success", "Signature verified. Logged in");
       navigate("/projects");
     }
-    
   }
 
   function connectWallet() {

@@ -45,7 +45,7 @@ const ProfileModal: FC<ModalProps> = ({ isOpen, onClose }) => {
         </div>
         <div className="flex flex-col mx-10">
           <h1 className="text-2xl font-bold m-6 flex justify-center">
-            Your Information
+            Profile
           </h1>
           <div className="flex flex-col justify-center">
             <div className="my-2 flex justify-between">
