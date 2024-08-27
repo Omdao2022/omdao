@@ -6,6 +6,8 @@ import { useRecoilState } from "recoil";
 import { redirect } from "react-router";
 import { useNavigate } from "react-router";
 import { showToast } from "../../../helper/ToastNotify";
+import { useAccount } from "wagmi";
+
 
 export const Web3Sign: FC = () => {
   const scheme = window.location.protocol.slice(0, -1);
@@ -17,6 +19,8 @@ export const Web3Sign: FC = () => {
 
   const [userInfo, setUserInfo] = useRecoilState(userAtom);
   const navigate = useNavigate();
+
+  const { address: walletAddress } = useAccount();
 
   async function createSiweMessage(
     address: string,
@@ -36,7 +40,7 @@ export const Web3Sign: FC = () => {
       uri: origin,
       version: "1",
       chainId: 1,
-      nonce: result.nonce,
+      nonce: result.nonce
     });
 
     console.log("message for siwe=======>", message);
@@ -55,16 +59,18 @@ export const Web3Sign: FC = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message, signature }),
+      body: JSON.stringify({ message, signature, walletAddress }),
       credentials: "include",
     });
 
     const result = await res.text();
     if (result) {
+      localStorage.setItem('userToken', result);
       setUserInfo({ ...userInfo, joined: true });
       showToast("success", "Signature verified. Logged in");
       navigate("/projects");
     }
+
   }
 
   function connectWallet() {

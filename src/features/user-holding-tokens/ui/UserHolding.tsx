@@ -2,25 +2,11 @@ import React, { useState, useEffect } from "react";
 import { ETHEREUM_TOKENS } from "../../../shared/constants/blockchain";
 import { ethers } from "ethers";
 import { useAccount } from "wagmi";
-
-interface TokenHoldingInfo {
-  id: number;
-  name: string;
-  price: number;
-  amount: string;
-}
-
 interface TokenHoldingList {
   symbol: string;
   balance: string;
   address: string;
 }
-
-const fashionItems: TokenHoldingInfo[] = [
-  { id: 1, name: "OmDao", price: 120, amount: "40000" },
-  { id: 2, name: "Serum", price: 30, amount: "2000" },
-  { id: 3, name: "Metal", price: 200, amount: "3000" },
-];
 
 const TokenList: React.FC = () => {
   const [tokenAmountList, setTokenAmountList] = useState<TokenHoldingList[]>(
@@ -34,14 +20,11 @@ const TokenList: React.FC = () => {
   const itemsPerPage = 4;
 
   const filteredTokens:TokenHoldingList[]=[];
-  const sortedItems = [...fashionItems].sort((a, b) => {
-    const comparison = a.price - b.price;
-    return sortDirection === "asc" ? comparison : -comparison;
-  });
 
   const getTokenHolding = async () => {
     return new Promise<TokenHoldingList[]>(async (resolve) => {
       const tokenList = Object.values(ETHEREUM_TOKENS);
+      tokenAmountList.length = 0;
       for (let tokenObj of tokenList) {
         const tokenContract = new ethers.Contract(
           tokenObj.address,
@@ -87,17 +70,9 @@ const TokenList: React.FC = () => {
 
   }, []); // Empty dependency array means this runs once when the component mounts
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortedItems.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(fashionItems.length / itemsPerPage);
-
-  // console.log("Ethreum", ETHEREUM_TOKENS);
-
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">My TokenList</h1>
+      <h1 className="text-xl mb-4 font-sans">My TokenList</h1>
       <div className=" max-h-60 overflow-y-auto">
         <table className="min-w-full bg-transparent border border-gray-300">
           <thead>
@@ -130,7 +105,6 @@ const TokenList: React.FC = () => {
                 <tr key={item.address} className="hover:bg-gray-100">
                   <td className="py-2 px-4 border-b">{item.symbol}</td>
                   <td className="py-2 px-4 border-b">{item.balance}</td>{" "}
-                  {/* Adjust as necessary */}
                 </tr>
               ))}
             </tbody>

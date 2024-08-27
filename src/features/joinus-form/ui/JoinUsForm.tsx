@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { Logo, Nav } from "../../../shared/ui";
 import { InputBox } from "./InputBox";
 import { CountrySelector } from "./CountryPicker";
@@ -16,6 +16,9 @@ import { SelectMenuOption } from "./CountryPicker/lib/types";
 import { useRecoilState } from "recoil";
 import { clientAtom } from "../../../recoil/atom/clientAtom";
 
+import { useAccount } from "wagmi";
+
+
 interface JoinUsFormProps {
   nextScene: () => void; // Define the type of nextScene
 }
@@ -29,9 +32,13 @@ interface FormData {
   location: string;
   address: string;
   zipcode: string;
+  walletAddress: string;
 }
 
 export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
+  const {isConnected, address : walletAddress} = useAccount();
+  console.log(isConnected, walletAddress)
+
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
@@ -48,7 +55,15 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
     location: "",
     address: "",
     zipcode: "",
+    walletAddress: ""
   });
+
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      walletAddress: walletAddress || "",
+    }));
+  }, [walletAddress])
 
   //--- begin use recoil ---//
   const [clientState, setClientState] = useRecoilState(clientAtom);

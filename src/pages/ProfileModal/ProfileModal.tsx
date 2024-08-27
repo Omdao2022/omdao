@@ -44,7 +44,7 @@ const ProfileModal: FC<ModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
         <div className="flex flex-col mx-10">
-          <h1 className="text-2xl font-bold m-6 flex justify-center">
+          <h1 className="text-3xl font-bold font-sans m-6 flex justify-center">
             Profile
           </h1>
           <div className="flex flex-col justify-center">
