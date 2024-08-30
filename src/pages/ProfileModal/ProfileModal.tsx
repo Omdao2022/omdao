@@ -1,27 +1,8 @@
 import React, { FC, useState } from "react";
-import {
-  FiUsers,
-  FiMapPin,
-  FiNavigation,
-  FiMail,
-  FiCalendar,
-  FiUserCheck,
-  FiVoicemail,
-} from "react-icons/fi";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { userAtom } from "../../recoil/atom/userAtom";
-import TokenList from "../../features/user-holding-tokens/ui/UserHolding";
-
-// interface userData {
-//   firstName: string;
-//   lastName: string;
-//   birthday: Date;
-//   email: string;
-//   country: string;
-//   location: string;
-//   address: string;
-//   zipcode: string;
-// }
+import MyProfile from "./MyProfile";
+import MyInvestments from "./MyInvestments";
 
 interface ModalProps {
   isOpen: boolean;
@@ -30,81 +11,50 @@ interface ModalProps {
 
 const ProfileModal: FC<ModalProps> = ({ isOpen, onClose }) => {
   const [userState] = useRecoilState(userAtom);
+  const [boardNum, setBoardNum] = useState(0);
 
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 ">
       <div className="bg-gray-700 rounded-lg p-6 pb-14">
-        <div className="flex justify-end">
+        <div className="">
           <button
             onClick={onClose}
             className="bg-blue-500 text-white text-sm px-3 py-1 rounded hover:bg-blue-600"
           >
             ×
           </button>
+          <button
+            onClick={() => setBoardNum(0)}
+            style={boardNum === 0 ? { display: "none" } : {}}
+            className="bg-blue-500 text-white text-sm px-3 py-1 rounded hover:bg-blue-600 ml-4"
+          >
+            ←
+          </button>
         </div>
-        <div className="flex flex-col mx-10">
-          <h1 className="text-3xl font-bold font-sans m-6 flex justify-center">
-            Profile
-          </h1>
-          <div className="flex flex-col justify-center">
-            <div className="my-2 flex justify-between">
-              <div className="w-[50%]">
-                <h6>Name</h6>
-                <div className="flex items-center bg-slate-800 px-8 py-3 rounded-xl">
-                  <FiUsers />
-                  &nbsp;| &nbsp;{" "}
-                  <span>{userState.firstName + " " + userState.lastName}</span>
-                </div>
-              </div>
-              <div className="w-[50%] ml-4">
-                <h6>Birthday</h6>
-                <div className="flex items-center bg-slate-800 px-8 py-3 rounded-xl">
-                  <FiCalendar />
-                  &nbsp;| &nbsp;{" "}
-                  <span>
-                    {userState.birthday
-                      .toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                      })
-                      .replace(/\//g, "-")}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="my-2">
-              <h6>Email</h6>
-              <div className="flex items-center bg-slate-800 px-8 py-3 rounded-xl">
-                <FiMail />
-                &nbsp;| &nbsp; <span>{userState.email}</span>
-              </div>
-            </div>
-            <div className="my-2">
-              <h6>Location</h6>
-              <div className="flex items-center bg-slate-800 px-8 py-3 rounded-xl">
-                <FiMapPin />
-                &nbsp;| &nbsp;{" "}
-                <span>
-                  {userState.address +
-                    " / " +
-                    userState.location +
-                    ". " +
-                    userState.country}
-                </span>
-              </div>
-            </div>
-            <div className="my-2">
-              <h6>Zipcode</h6>
-              <div className="flex items-center bg-slate-800 px-8 py-3 rounded-xl">
-                <FiVoicemail className="mt-1" />
-                &nbsp;| &nbsp; <span>{userState.zipcode}</span>
-              </div>
+        <div className="flex flex-col mx-10 w-[460px] h-[480px]">
+          <div style={boardNum !== 0 ? { display: "none" } : {}}>
+            <h1 className="text-3xl font-bold font-sans m-6 flex justify-center">
+              Hi,&nbsp; <span>{userState.firstName + " " + userState.lastName}</span>
+            </h1>
+
+            <div className="flex justify-around mt-28">
+              <button
+                onClick={() => setBoardNum(1)}
+                className="w-40 bg-[#4f75ad] text-sm font-medium rounded-lg p-[10px] hover:bg-[#4e528f] transation duration-150 ease-in-out active:scale-90"
+              >
+                My Profile
+              </button>
+              <button
+                onClick={() => setBoardNum(2)}
+                className="w-40 bg-[#4f75ad] text-sm font-medium rounded-lg p-[10px] hover:bg-[#4e528f] transation duration-150 ease-in-out active:scale-90"
+              >
+                My Investments
+              </button>
             </div>
           </div>
-
-          <TokenList />
+          {boardNum === 1 && <MyProfile />}
+          {boardNum === 2 && <MyInvestments />}
         </div>
       </div>
     </div>
