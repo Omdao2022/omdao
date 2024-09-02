@@ -87,6 +87,10 @@ export const KycForm: FC<KycFormProps> = ({ nextScene }) => {
             }}
             onError={(data: any) => console.log("onError", data)}
           />
+        </>
+      ) : (
+        <div className="h-full w-full flex flex-col justify-center items-center">
+          <Loading />
           <div>
             <button
               className="my-4 w-full bg-[#CB4D8C] rounded-md p-2 active:scale-90 transition-transform ease-in-out delay-150"
@@ -95,10 +99,6 @@ export const KycForm: FC<KycFormProps> = ({ nextScene }) => {
               Next
             </button>
           </div>
-        </>
-      ) : (
-        <div className="h-full w-full flex flex-col justify-center items-center">
-          <Loading />
         </div>
       )}
     </div>

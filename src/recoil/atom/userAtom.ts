@@ -1,6 +1,18 @@
 import { atom } from 'recoil';
+export interface UserState {
+  firstName: string;
+  lastName: string;
+  email: string;
+  birthday: Date;
+  country: string;
+  location: string;
+  address: string;
+  zipcode: string;
+  kycPassed: boolean;
+  joined: boolean;
+}
 
-export const userAtom = atom({
+export const userAtom = atom<UserState>({
   key: "userAtom",
   default: {
     firstName: 'John',

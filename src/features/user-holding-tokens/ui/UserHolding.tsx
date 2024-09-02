@@ -4,6 +4,8 @@ import { ethers } from "ethers";
 import { useAccount } from "wagmi";
 interface TokenHoldingList {
   symbol: string;
+  name: string,
+  title: string,
   balance: string;
   address: string;
 }
@@ -39,6 +41,8 @@ const TokenList: React.FC = () => {
         const formattedBalance = ethers.utils.formatUnits(balance, decimals);
         tokenAmountList.push({
           symbol: tokenObj.symbol,
+          name: tokenObj.name,
+          title: tokenObj.title,
           balance: formattedBalance,
           address: tokenObj.address,
         });
@@ -73,10 +77,14 @@ const TokenList: React.FC = () => {
   return (
     <div className="container mx-auto">
       <h1 className="text-xl mb-4 font-sans">My TokenList</h1>
-      <div className=" max-h-60 overflow-y-auto">
-        <table className="min-w-full bg-transparent border border-gray-300">
+      <div className=" max-h-60 overflow-y-auto overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="min-w-full bg-transparent w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead>
-            <tr className="bg-gray-200 text-gray-700">
+            <tr
+              className="text-gray-700 uppercase bg-gray-50 dark
+            :bg-gray-900 dark:text-gray-400"
+            >
+              <th className="py-1 px-4 border-b">Project</th>
               {/* <th className="py-2 px-4 border-b">ID</th> */}
               <th className="py-1 px-4 border-b">Token Symbol</th>
               {/* <th className="py-2 px-4 border-b">Price ($)</th> */}
@@ -86,7 +94,10 @@ const TokenList: React.FC = () => {
           {loading ? (
             <tbody>
               <tr>
-                <td colSpan={2} className=" text-center">
+                <td
+                  colSpan={3}
+                  className="h-14 text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 animate-pulse"
+                >
                   Loading...
                 </td>
               </tr>
@@ -94,7 +105,10 @@ const TokenList: React.FC = () => {
           ) : filteredTokens.length === 0 ? (
             <tbody>
               <tr>
-                <td colSpan={2} className=" text-center">
+                <td
+                  colSpan={3}
+                  className="h-14 text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
                   No tokens available
                 </td>
               </tr>
@@ -102,9 +116,17 @@ const TokenList: React.FC = () => {
           ) : (
             <tbody>
               {filteredTokens.map((item) => (
-                <tr key={item.address} className="hover:bg-gray-100">
-                  <td className="py-2 px-4 border-b">{item.symbol}</td>
-                  <td className="py-2 px-4 border-b">{item.balance}</td>{" "}
+                <tr
+                  key={item.address}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <td className="py-2 px-4 border-b text-gray-900 whitespace-nowrap dark:text-white">
+                    {item.title}
+                  </td>
+                  <td className="py-2 px-4 border-b text-gray-900 whitespace-nowrap dark:text-white">
+                    {item.symbol}
+                  </td>
+                  <td className="py-2 px-4 border-b">{item.balance}</td>
                 </tr>
               ))}
             </tbody>

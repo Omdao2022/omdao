@@ -7,6 +7,7 @@ import { redirect } from "react-router";
 import { useNavigate } from "react-router";
 import { showToast } from "../../../helper/ToastNotify";
 import { useAccount } from "wagmi";
+import setAuthToken from "../../set-auth-token/setAuthToken";
 
 
 export const Web3Sign: FC = () => {
@@ -65,7 +66,7 @@ export const Web3Sign: FC = () => {
 
     const result = await res.text();
     if (result) {
-      localStorage.setItem('userToken', result);
+      setAuthToken(result);
       setUserInfo({ ...userInfo, joined: true });
       showToast("success", "Signature verified. Logged in");
       navigate("/projects");

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Logo, Nav } from './shared/ui';
 import { Web3Button } from '@web3modal/react';
 import { ButtonChangeLanguage } from './widgets/header/ui/button-change-language';
@@ -9,7 +9,7 @@ import { useRecoilState } from 'recoil';
 import { userAtom } from './recoil/atom/userAtom';
 
 export const Header: FC = () => {
-  const [userState] = useRecoilState(userAtom);
+  const [userState, setUserState] = useRecoilState(userAtom);
 
   const { t } = useTranslation();
   return (

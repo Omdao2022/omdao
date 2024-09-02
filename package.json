@@ -30,6 +30,7 @@
     "i18next": "^23.1.0",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.2.1",
+    "jwt-decode": "^4.0.0",
     "mobx": "^6.6.2",
     "mobx-react-lite": "^3.4.0",
     "react": "^18.2.0",
@@ -82,6 +83,7 @@
     }
   },
   "devDependencies": {
+    "@types/jwt-decode": "^2.2.1",
     "autoprefixer": "^10.4.13",
     "node-sass": "^9.0.0",
     "postcss": "^8.4.19",
