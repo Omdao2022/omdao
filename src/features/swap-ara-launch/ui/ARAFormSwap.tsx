@@ -26,6 +26,8 @@ export const ARAFormSwap: FC = observer(() => {
     getupdateMaxCount,
   } = store;
 
+  console.log("OMDAO swap here=================>!");
+
   return (
     <>
       <BaseTokensForm

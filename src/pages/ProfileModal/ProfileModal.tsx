@@ -13,9 +13,12 @@ const ProfileModal: FC<ModalProps> = ({ isOpen, onClose }) => {
   const [userState] = useRecoilState(userAtom);
   const [boardNum, setBoardNum] = useState(0);
 
-  if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 ">
+    <div
+      className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 transition-opacity duration-500 
+        ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+      `}
+    >
       <div className="bg-gray-700 rounded-lg p-6 pb-14">
         <div className="">
           <button

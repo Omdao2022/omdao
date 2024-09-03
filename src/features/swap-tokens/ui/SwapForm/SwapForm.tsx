@@ -21,6 +21,8 @@ export const SwapForm: FC = observer(() => {
   const tokenASymbol = params.get('tokenA') as ETokenSymbols;
   const tokenBSymbol = params.get('tokenB') as ETokenSymbols;
 
+  console.log("Token Here======================>!");
+
   const [{ onSwap, swapStatus, isSwapping }] = useState(
     () => new SwapFormStore(rootStore, tokenASymbol, tokenBSymbol)
   );
