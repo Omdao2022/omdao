@@ -18,13 +18,15 @@ export const Header: FC = () => {
       <div className="container mx-auto gap-4 flex flex-col xl:flex-row justify-between items-center px-4">
         <Logo />
         <Nav />
-        <div className="flex items-center justify-self-center gap-4 lg:justify-self-start">
+        <div className="flex items-center justify-self-center gap-6 lg:justify-self-start">
           <ButtonChangeLanguage />
-          <Web3Button label={t('common.connectWallet')} />
-          {
-            !userState.joined ? <BtnJoinUs /> : <BtnUser/>
-          }
-          <Web3Sign />
+          <div className='flex flex-row justify-end gap-2'>
+            <Web3Button label={t("common.connectWallet")} />
+            {!userState.joined ? <BtnJoinUs /> : <BtnUser />}
+            <div className="w-24">
+              <Web3Sign />
+            </div>
+          </div>
         </div>
       </div>
     </header>

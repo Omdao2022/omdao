@@ -82,9 +82,9 @@ export const Web3Sign: FC = () => {
 
   return (
     <>
-      <div>
+      <div className="flex w-full">
         <button
-          className="flex flex-row gap-2 items-center bg-[#CB4D8C] text-sm font-medium rounded-lg p-[10px] hover:bg-[#D05F98] transation duration-150 ease-in-out active:scale-90"
+          className="flex flex-row w-full gap-2  justify-center items-center bg-[#CB4D8C] text-sm font-medium rounded-lg p-[10px] hover:bg-[#D05F98] transation duration-150 ease-in-out active:scale-90"
           onClick={signInWithEthereum}
         >
           SIWE

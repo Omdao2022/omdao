@@ -166,10 +166,10 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
 
   return (
     <>
-      <div className="flex flex-col m-6 mx-10">
+      <div className="flex flex-col justify-start gap-10 m-6 mx-10">
         <div className=" mt-8 flex flex-row items-center justify-center gap-4">
-          <FiUsers className=" text-4xl text-[#CB4D8C]" />
-          <h2 className="text-[#CB4D8C] font-sans">Join Us</h2>
+          <FiUsers className=" text-4xl text-[#ffffff]" />
+          <p className="text-[#ffffff] font-sans text-4xl">Join us</p>
         </div>
 
         <div className="grid md:grid-rows-2 grid-rows-1">
@@ -195,7 +195,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
             value={formData.birthday.toString()}
             onChange={handleChange}
             error={error}
-            icon={<FiCalendar />}
+            icon={<FiCalendar/>}
           />
           <CountrySelector
             id={"country-selector"}
@@ -219,7 +219,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
             );
           })}
           <button
-            className="col-span-2 mt-8 mx-2 bg-[#CB4D8C] rounded-md p-2 active:scale-90 transition-transform ease-in-out delay-150"
+            className="col-span-2 mt-14 mx-2 bg-[#CB4D8C] rounded-md p-2 active:scale-90 transition-transform ease-in-out delay-150"
             onClick={registerUser}
           >
             Next

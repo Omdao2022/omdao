@@ -44,26 +44,31 @@ export function CountrySelector({
   }, [ref]);
 
   const [query, setQuery] = useState("");
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  
 
   return (
     <div ref={ref}>
       <div className="m-2 relative">
         <label
-          className="block text-sm font-medium mb-1 transition-colors duration-200">
+          className={`block text-sm font-normal mb-1 transition-colors duration-200 ${isFocused? "text-white": "text-[#c1c1c1]"}`}
+        >
           Country
         </label>
         <button
           type="button"
           className={`${
             disabled ? "bg-neutral-100" : "bg-white"
-          } relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm`}
+          } relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-3 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-[#ffffff] focus:border-[#ffffff] sm:text-sm`}
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
           onClick={onToggle}
           disabled={disabled}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
         >
-          <span className="truncate flex items-center">
+          <span className={`truncate flex flex-row items-center text-[16px] ${isFocused? "text-white" : "text-[#c1c1c1]"}`}>
             <img
               alt={`${selectedValue.value}`}
               src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${selectedValue.value}.svg`}

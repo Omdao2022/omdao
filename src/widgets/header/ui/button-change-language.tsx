@@ -16,18 +16,18 @@ export const ButtonChangeLanguage: FC = () => {
     <button onClick={onClick}>
       <span
         className={classNames({
-          'text-[#5557a4] font-bold': i18n.language === 'ru',
+          'text-[#ffffff] font-medium': i18n.language === 'ru',
         })}
       >
-        RU&nbsp;
+        Ru&nbsp;
       </span>
-      <span className="font-bold">|</span>
+      <span className="font-medium">|</span>
       <span
         className={classNames({
-          'text-[#5557a4] font-bold': i18n.language === 'en',
+          'text-[#c1c1c1] font-medium': i18n.language === 'en',
         })}
       >
-        &nbsp;EN
+        &nbsp;En
       </span>
     </button>
   );

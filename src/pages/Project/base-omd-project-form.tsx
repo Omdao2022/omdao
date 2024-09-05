@@ -44,7 +44,7 @@ export const BaseOMDProjectForm: FC<IBaseProjectFormProps> = observer(
         <BaseTokensForm
           title={t('common.purchaseToken', { symbol })}
           onSubmit={onSubmit}
-          sourceContractSymbol={ETokenSymbols.OMD}
+          sourceContractSymbol={ETokenSymbols.USDT}
           destinationContractSymbol={symbol}
           calculateDestinationAmount={calculateDestinationAmount}
           swapStatus={swapStatus}

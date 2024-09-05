@@ -17,8 +17,8 @@ export const InputBox: FC<CustomInputProps> = ({
       <div>
         {label && (
           <label
-            className={`block text-sm font-medium mb-1 transition-colors duration-200 ${
-              isFocused ? "text-[#CB4D8C]" : "text-white"
+            className={`block text-sm font-normal mb-1 transition-colors duration-200 ${
+              isFocused ? "text-[#ffffff]" : "text-[#bebebe]"
             }`}
           >
             {label}
@@ -26,9 +26,9 @@ export const InputBox: FC<CustomInputProps> = ({
         )}
       </div>
       <div>
-        <div className="relative">
+        <div className={`relative ${isFocused ? "text-[#ffffff]" : "text-[#c1c1c1]"}`}>
           {icon && (
-            <span className="flex absolute left-3 top-2 text-white">
+            <span className={`flex flex-row justify-start items-center gap-1 absolute left-4 top-3 ${isFocused? "text-white " : "text-[#c1c1c1]"}`} >
               {icon}
               <p className="pl-1 text-sm">|</p>
             </span>
@@ -41,9 +41,9 @@ export const InputBox: FC<CustomInputProps> = ({
             onChange={onChange}
             onFocus={() => setIsFocused(true)} // Set focus state to true
             onBlur={() => setIsFocused(false)} // Set focus state to false
-            className={`block w-full pl-10 pr-3 py-1 border rounded-md bg-transparent ${
+            className={`block w-full pl-14 pr-3 py-2 border rounded-md bg-transparent ${
               error ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } focus:outline-none focus:ring-2 focus:ring-[#ffffff]`}
           />
         </div>
         {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
