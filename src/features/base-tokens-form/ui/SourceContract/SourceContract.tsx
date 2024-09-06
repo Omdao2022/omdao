@@ -13,6 +13,8 @@ export interface SourceContractProps {
   exchangeRate?: string;
   className?: string;
   maxCount?: string;
+  onNextToken?: () => void;
+  onPrevToken?: () => void;
 }
 
 export const SourceContract: FC<SourceContractProps> = ({
@@ -22,6 +24,8 @@ export const SourceContract: FC<SourceContractProps> = ({
   fullContractInfo,
   exchangeRate,
   maxCount,
+  onNextToken,
+  onPrevToken,
   ...otherProps
 }) => {
   const { t } = useTranslation();
@@ -38,6 +42,8 @@ export const SourceContract: FC<SourceContractProps> = ({
         onChangeAmount={onChangeAmount}
         exchangeRate={exchangeRate}
         maxCount={maxCount}
+        onNextToken={onNextToken}
+        onPrevToken={onPrevToken}
       />
     </div>
   );

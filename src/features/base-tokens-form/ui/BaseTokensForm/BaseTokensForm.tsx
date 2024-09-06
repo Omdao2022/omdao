@@ -33,6 +33,8 @@ export interface BaseTokensFormProps {
   maxCount?: string;
   getupdateMaxCount?: () => Promise<any>;
   mode?: 'swap';
+  onNextToken?: () => void;
+  onPrevToken?: () => void;
 }
 
 export const BaseTokensForm: FC<BaseTokensFormProps> = observer(
@@ -51,6 +53,8 @@ export const BaseTokensForm: FC<BaseTokensFormProps> = observer(
     maxCount,
     getupdateMaxCount,
     mode = 'swap',
+    onNextToken,
+    onPrevToken,
   }) => {
     const { t } = useTranslation();
 
@@ -216,7 +220,9 @@ export const BaseTokensForm: FC<BaseTokensFormProps> = observer(
                   fullContractInfo={sourceData}
                   amount={sourceAmount}
                   onChangeAmount={onChangeSwapAmount}
-                  maxCount={sourceMaxCount}
+                    maxCount={sourceMaxCount}
+                    onPrevToken={onPrevToken}
+                    onNextToken={onNextToken}
                 />
                 {canRearrangeContracts && (
                   <Arrow
