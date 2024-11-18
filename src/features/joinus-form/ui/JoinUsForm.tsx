@@ -44,7 +44,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   // Default this to a country's code to preselect it
-  const [country, setCountry] = useState<SelectMenuOption["value"]>("BE");
+  const [country, setCountry] = useState<SelectMenuOption["value"]>("BT");
 
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -127,13 +127,6 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene }) => {
       [name as keyof FormData]: value,
     }));
     console.log("formData ===============> ", formData);
-    // setInputValue(e.target.value);
-    // // Example validation
-    // if (e.target.value.length < 3) {
-    //   setError("Input must be at least 3 characters long");
-    // } else {
-    //   setError("");
-    // }
   };
 
   const registerUser = async () => {

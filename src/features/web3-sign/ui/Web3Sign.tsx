@@ -33,6 +33,8 @@ export const Web3Sign: FC = () => {
 
     const result = await res.json();
 
+    console.log("Nonce from backend: ", result);
+
     const message = new SiweMessage({
       scheme,
       domain,
