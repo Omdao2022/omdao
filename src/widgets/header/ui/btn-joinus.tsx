@@ -3,7 +3,6 @@ import { FiUsers } from "react-icons/fi";
 
 import { useNavigate } from 'react-router-dom';
 
-
 export const BtnJoinUs: FC = () => {
   const navigate = useNavigate();
 
