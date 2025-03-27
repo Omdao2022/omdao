@@ -4,7 +4,7 @@ import { InputBox } from "./InputBox";
 import { CountrySelector } from './CountryPicker';
 import { FiUsers } from "react-icons/fi";
 import { COUNTRIES } from "./CountryPicker/lib/countries";
-import { SelectMenuOption } from "./CountryPicker/lib/types";
+import { CountrySelectMenuOption } from "./CountryPicker/lib/types";
 
 interface JoinUsFormProps {
   nextScene: () => void; // Define the type of nextScene
@@ -13,7 +13,12 @@ interface JoinUsFormProps {
 interface FormData {
   firstName: string,
   lastName: string,
-
+  birthday: Date,
+  email: string,
+  country: CountrySelectMenuOption,
+  location: string,
+  address: string,
+  zipcode: string,
 }
 
 export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
@@ -22,7 +27,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
 
   const [isOpen, setIsOpen] = useState(false);
   // Default this to a country's code to preselect it
-  const [country, setCountry] = useState<SelectMenuOption["value"]>("BE");
+  const [country, setCountry] = useState<CountrySelectMenuOption["value"]>("BE");
 
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -38,24 +43,28 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
 
   const inputProps1 = [
     {
+      key: 'inputProps1_1',
       label: "First Name",
       type: "text",
       placeholder: "John",
       icon: <FiUsers />,
     },
     {
+      key: 'inputProps1_2',
       label: "Second Name",
       type: "text",
       placeholder: "Doe",
       icon: <FiUsers />,
     },
     {
+      key: 'inputProps1_3',
       label: "Birthday",
       type: "date",
       placeholder: "1990-01-01",
       icon: <FiUsers />,
     },
     {
+      key: 'inputProps1_4',
       label: "Email",
       type: "email",
       placeholder: "example@mail.com",
@@ -65,18 +74,21 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
 
   const inputProps2 = [
     {
+      key: 'inputProps2_1',
       label: "Location",
       type: "text",
       placeholder: "Location",
       icon: <FiUsers />,
     },
     {
+      key: 'inputProps2_2',
       label: "Address",
       type: "text",
       placeholder: "Address",
       icon: <FiUsers />,
     },
     {
+      key: 'inputProps2_3',
       label: "Zipcode",
       type: "text",
       placeholder: "70000",
@@ -131,6 +143,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
           {inputProps1.map((item) => {
             return (
               <InputBox
+                key={item.key}
                 label={item.label}
                 type={item.type}
                 placeholder={item.placeholder}
@@ -151,6 +164,7 @@ export const JoinUsForm: FC<JoinUsFormProps> = ({ nextScene}) => {
           {inputProps2.map((item) => {
             return (
               <InputBox
+                key={item.key}
                 label={item.label}
                 type={item.type}
                 placeholder={item.placeholder}

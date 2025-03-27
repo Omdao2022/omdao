@@ -1,8 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
 import SumsubWebSdk from '@sumsub/websdk-react';
+import {SumsubToken} from "../types";
 
 export const KycForm: FC = () => {
-  const [accessToken, setAccessToken] = useState<Token>({
+  const [accessToken, setAccessToken] = useState<SumsubToken>({
     token: "",
     userId: "",
   });
@@ -19,7 +20,7 @@ export const KycForm: FC = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const result: Token = await response.json();
+        const result: SumsubToken = await response.json();
         console.log("response==================>", result);
         setAccessToken(result);
       } catch (error) {
